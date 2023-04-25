@@ -4,4 +4,5 @@ pandas
 keras 
 tensorflow  
 matplotlib
+pythoncom
 
