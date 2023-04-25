@@ -2,4 +2,5 @@ opencv-python-headless
 numpy 
 pandas 
 keras 
-tensorflow
+tensorflow 
+pywin32
