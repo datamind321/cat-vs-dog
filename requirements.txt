@@ -3,6 +3,5 @@ numpy
 pandas 
 keras 
 tensorflow  
-matplotlib
-pythoncom
+matplotlib 
 
