@@ -10,9 +10,12 @@ from tensorflow import keras
 from keras.models import Sequential
 from keras.layers import Conv2D,Dense,MaxPool2D,Flatten
 from keras.models import load_model
-from keras.utils import load_img
+from keras.utils import load_img 
+import pythoncom
+import win32com.client
+speaker = win32com.client.Dispatch("SAPI.SpVoice",pythoncom.CoInitialize())
 
-
+  
 
 
 
@@ -48,7 +51,7 @@ img = st.file_uploader("",type=['jpg','png','jpeg'])
 if img is not None:
     image = Image.open(img)
      
-    st.image(image,use_column_width=False)
+    st.image(image,use_column_width=True)
     pred=st.button("Predict")
     st.write("")
     # st.write("Classifying.....")
@@ -57,17 +60,20 @@ if img is not None:
             image,output=model_prediction(image,'vgg16_1.h5') 
             if output[0][0] > output[0][1]:
                 st.write("""
-		# This is a Cat
-			""")
+		# It Seem's Looks like a Cat 🐱
+			""") 
+                speaker.speak('It seems looks like a cat')
     
             else:
-                st.write(""" 
-		# This is a Dog
+                st.write("""  
+		# It seems looks like a  Dog 🐶
 			""") 
+                speaker.speak('It seems looks like a dog')
         except:
             st.write("""
 		### ❗ Oops... Something Is Going Wrong
 			""")  
+            speaker.speak('Oops Something Is Going Wrong')
 
 
      
